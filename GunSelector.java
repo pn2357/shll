@@ -4,13 +4,18 @@ public class GunSelector implements Consts
 {
 	//同じインスタンスを繰り返し使用している
 	FullTurnGun fullTurnGun =new FullTurnGun();
-	EstimateNomal estimateNomal =new EstimateNomal();	
+	EstimateNomal estimateNomal =new EstimateNomal();
+	Exec myRobot =null;
+	Enemy enemy = null;
 	
 	/**
 	 * メソッド
 	 */
-	public Gun select(Exec myRobot)
+	public Gun select(Exec myRobot,Enemy enemy)
 	{
+		this.myRobot=myRobot;
+		this.enemy=enemy;
+		
 		if(!myRobot.enemyInSightFlag)
 			return fullTurnGun;
 		else
@@ -39,12 +44,13 @@ public class GunSelector implements Consts
 	public class EstimateNomal implements Gun
 	{
 
-		public double getDegree() {
-			return 0;
+		public double getDegree()
+		{
+			return Util.normalizeDegree(enemy.getBearing()+myRobot.getHeading()-myRobot.getGunHeading());
 		}
 
 		public double getPower() {
-			return 0;
+			return 2.0;
 		}
 	}
 	

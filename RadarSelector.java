@@ -2,16 +2,16 @@ package shll;
 
 public class RadarSelector implements Consts
 {
-	 Exec myRobot =null;
-	 Enemy enemy = null;
-	 FullTurnRadar fullTurnRadar =new FullTurnRadar();
-	 ChaseScanRadar chaseScanRadar =new ChaseScanRadar();
-	 
+	Exec myRobot =null;
+	Enemy enemy = null;
+	FullTurnRadar fullTurnRadar =new FullTurnRadar();
+	ChaseScanRadar chaseScanRadar =new ChaseScanRadar();
 	 
 	public Radar select(Exec myRobot,Enemy enemy)
 	{
 		this.myRobot=myRobot;
 		this.enemy=enemy;
+		
 		if(!myRobot.enemyInSightFlag)
 			return fullTurnRadar;		//“G‚ªõ“G”ÍˆÍ“à‚É‚¢‚È‚¢ê‡
 		else

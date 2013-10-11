@@ -4,13 +4,21 @@ public class MovementSelector implements Consts
 {
 	FullTurnMovement fullTurnMovement= new FullTurnMovement();
 	SimpleAvoidMovement simpleAvoidMovement =new SimpleAvoidMovement();
+	StopMovement stopMovement =new StopMovement();
+	Exec myRobot =null;
+	Enemy enemy = null;
 	
-	public Movement select(Exec myRobot)
+	public Movement select(Exec myRobot,Enemy enemy)
 	{
+		this.myRobot=myRobot;
+		this.enemy=enemy;
+		
 		if(!myRobot.enemyInSightFlag)
 			return fullTurnMovement;
-		else
+		else if(myRobot.shotDetectedFlag)
 			return simpleAvoidMovement;
+		else 
+			return stopMovement;
 	}
 	
 	/**
@@ -33,19 +41,28 @@ public class MovementSelector implements Consts
 	
 	public class SimpleAvoidMovement implements Movement
 	{
-		
 		public double getDegree()
 		{
 			return 0;
 		}
-
+		
 		public double getDistance()
 		{
-			
+			return 0;
+		}
+	}
+	public class StopMovement implements Movement
+	{
+
+		public double getDegree() {
+			// TODO 自動生成されたメソッド・スタブ
 			return 0;
 		}
 
+		public double getDistance() {
+			// TODO 自動生成されたメソッド・スタブ
+			return 0;
+		}
+		
 	}
-
-
 }
