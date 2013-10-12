@@ -1,4 +1,4 @@
-package shll;
+package shll.radar;
 
 public interface Radar
 {

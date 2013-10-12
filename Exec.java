@@ -2,6 +2,9 @@ package shll;
 
 import java.awt.Color;
 
+import shll.radar.*;
+import shll.gun.*;
+import shll.caterpillar.*;
 import robocode.*;
 
 public class Exec extends AdvancedRobot implements Consts
@@ -10,10 +13,8 @@ public class Exec extends AdvancedRobot implements Consts
 	Movement movement = null;
 	Gun gun =null;
 	Radar radar = null;
-	MovementSelector movementSelector = new MovementSelector();
-	GunSelector gunSelector = new GunSelector();
-	RadarSelector radarSelector = new RadarSelector();
 	Enemy enemy =new Enemy();
+	public int direction =1;
 	public boolean enemyInSightFlag=false;
 	public boolean shotDetectedFlag=false;
 	
@@ -41,7 +42,7 @@ public class Exec extends AdvancedRobot implements Consts
 	
 	public void doMove()
 	{
-		movement=movementSelector.select(this,enemy);
+		movement=MovementSelector.select(this,enemy);
 		setTurnRight(movement.getDegree());
 		if(movement.getDistance()!=0)
 			setAhead(movement.getDistance());
@@ -49,7 +50,7 @@ public class Exec extends AdvancedRobot implements Consts
 	
 	public void doGun()
 	{
-		gun=gunSelector.select(this,enemy);
+		gun=GunSelector.select(this,enemy);
 		setTurnGunRight(gun.getDegree());
 		if(gun.getPower()!=0)
 			setFire(gun.getPower());
@@ -57,7 +58,7 @@ public class Exec extends AdvancedRobot implements Consts
 	
 	public void doRadar()
 	{
-		radar=radarSelector.select(this,enemy);
+		radar=RadarSelector.select(this,enemy);
 		setTurnRadarRight(radar.getDegree());
 	}
 	
@@ -72,8 +73,6 @@ public class Exec extends AdvancedRobot implements Consts
 		decisionShot(e);
 		enemyInSightFlag=true;
 		enemy.setAll(e);
-		
-
 	}
 	public void decisionShot(ScannedRobotEvent e)
 	{
@@ -107,5 +106,10 @@ public class Exec extends AdvancedRobot implements Consts
 			setAhead(0);
 			execute();
 		}
+	}
+	
+	public void onHitWall(HitWallEvent event)
+	{
+		direction=-direction;
 	}
 }

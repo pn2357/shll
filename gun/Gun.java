@@ -1,4 +1,4 @@
-package shll;
+package shll.gun;
 
 public interface Gun
 {
