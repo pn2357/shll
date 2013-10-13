@@ -12,7 +12,8 @@ public class SimpleAvoidMovement implements Movement
 	{
 		Util.ShortTurn shortTurn = new ShortTurn(enemy.getBearing()+90);
 		degree=shortTurn.getDegree();
-		distance=myRobot.direction*shortTurn.getDirection()*distance;
+		ramdomDirection=(Math.random()>0.5)?1:-1;
+		distance=ramdomDirection*distance;
 	}
 	
 	public Double getDegree()
