@@ -6,9 +6,9 @@ import shll.Util;
 
 public class EstimateLinear implements Gun
 {
-	double bulletPower=2.0;
-	double degree=0.0;
-	GunBearingEstimator gunBearingEstimator;
+	private double bulletPower=2.0;
+	private double degree=0.0;
+	private GunBearingEstimator gunBearingEstimator;
 	
 	/**
 	 * コンストラクタ
@@ -20,6 +20,7 @@ public class EstimateLinear implements Gun
 		double h=Util.normalizeDegree(enemy.getHeading());
 		double b=Util.normalizeDegree(myRobot.getHeading()+enemy.getBearing());
 		double d=enemy.getDistance();
+		bulletPower=new DecideBulletPower(myRobot,enemy).getBulletPower();
 		gunBearingEstimator=new GunBearingEstimator(new LinearFunction(v,h,b,d),bulletPower);
 		degree=Util.normalizeDegree(gunBearingEstimator.getEstimatedGunBearing()-myRobot.getGunHeading());
 	}
