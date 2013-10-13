@@ -20,20 +20,18 @@ public class EstimateLinear implements Gun
 		double h=Util.normalizeDegree(enemy.getHeading());
 		double b=Util.normalizeDegree(myRobot.getHeading()+enemy.getBearing());
 		double d=enemy.getDistance();
-		
-		LinearFunction linearFunction =new LinearFunction(v,h,b,d);
-		gunBearingEstimator=new GunBearingEstimator(linearFunction,bulletPower);
-		degree=Util.normalizeDegree(gunBearingEstimator.getEstimatedGunBearing()-myRobot.getGunHeading());	//ê‚ëŒäpÇ™ï‘Ç≥ÇÍÇÈ
+		gunBearingEstimator=new GunBearingEstimator(new LinearFunction(v,h,b,d),bulletPower);
+		degree=Util.normalizeDegree(gunBearingEstimator.getEstimatedGunBearing()-myRobot.getGunHeading());
 	}
 	
-	public double getDegree()
+	public Double getDegree()
 	{
-		return degree;
+		return new Double(degree);
 	}
 
-	public double getPower()
+	public Double  getPower()
 	{
-		return bulletPower;
+		return new Double(bulletPower);
 	}
 
 

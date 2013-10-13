@@ -2,13 +2,13 @@ package shll.gun;
 
 public class EstimateCircular implements Gun
 {	
-	public double getDegree() {
+	public Double getDegree() {
 		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return new Double(0);
 	}
 
-	public double getPower() {
+	public Double getPower() {
 		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+		return new Double(0);
 	}
 }

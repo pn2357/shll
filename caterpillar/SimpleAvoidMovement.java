@@ -1,23 +1,27 @@
 package shll.caterpillar;
 import shll.*;
+import shll.Util.ShortTurn;
 
 public class SimpleAvoidMovement implements Movement
 {
 	double degree=0.0;
-	double distance=50.0;
+	double distance=80;
+	int ramdomDirection=1;
+	
 	SimpleAvoidMovement(Exec myRobot,Enemy enemy)
 	{
-		degree=Util.normalizeDegree(enemy.getBearing()+90);
-		distance=myRobot.direction*distance;
+		Util.ShortTurn shortTurn = new ShortTurn(enemy.getBearing()+90);
+		degree=shortTurn.getDegree();
+		distance=myRobot.direction*shortTurn.getDirection()*distance;
 	}
 	
-	public double getDegree()
+	public Double getDegree()
 	{
-		return degree;
+		return new Double(degree);
 	}
 	
-	public double getDistance()
+	public Double getDistance()
 	{
-		return distance;
+		return new Double(distance);
 	}
 }

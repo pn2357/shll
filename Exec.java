@@ -23,7 +23,6 @@ public class Exec extends AdvancedRobot implements Consts
 		initialize();
 		while(true)
 		{
-			if(shotDetectedFlag) out.println("ban");
 			doMove();		//移動行動の決定
 			doRadar();		//レーダーの行動の決定
 			doGun();		//砲撃の行動の決定
@@ -40,26 +39,33 @@ public class Exec extends AdvancedRobot implements Consts
 		setScanColor(Color.black);
 	}
 	
+	/**
+	 * do系でラッパークラスを使用するのは停止と継続を使い分けたいため。
+	 * nullが返された時はif文により前の動作を継続して行う。0の時は0がセット出来き動作を停止できる
+	 */
 	public void doMove()
 	{
 		movement=MovementSelector.select(this,enemy);
-		setTurnRight(movement.getDegree());
-		if(movement.getDistance()!=0)
-			setAhead(movement.getDistance());
+		if(movement.getDegree()!=null)
+			setTurnRight(movement.getDegree().doubleValue());
+		if(movement.getDistance()!=null)
+			setAhead(movement.getDistance().doubleValue());
 	}
 	
 	public void doGun()
 	{
 		gun=GunSelector.select(this,enemy);
-		setTurnGunRight(gun.getDegree());
-		if(gun.getPower()!=0)
-			setFire(gun.getPower());
+		if(gun.getDegree()!=null)
+			setTurnGunRight(gun.getDegree().doubleValue());
+		if(gun.getPower()!=null)
+			setFire(gun.getPower().doubleValue());
 	}
 	
 	public void doRadar()
 	{
 		radar=RadarSelector.select(this,enemy);
-		setTurnRadarRight(radar.getDegree());
+		if(radar.getDegree()!=null)
+			setTurnRadarRight(radar.getDegree().doubleValue());
 	}
 	
 	/*public void onCustomEvent(CustomEvent e)

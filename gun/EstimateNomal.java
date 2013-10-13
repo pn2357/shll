@@ -12,12 +12,12 @@ public class EstimateNomal implements Gun
 		degree=Util.normalizeDegree(enemy.getBearing()+myRobot.getHeading()-myRobot.getGunHeading());
 		power=2.0;
 	}
-	public double getDegree()
+	public Double getDegree()
 	{
-		return degree;
+		return new Double(degree);
 	}
 
-	public double getPower() {
-		return power;
+	public Double getPower() {
+		return new Double(power);
 	}
 }

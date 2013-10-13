@@ -3,13 +3,13 @@ import shll.*;
 
 public class FullTurnMovement implements Movement,Consts
 {
-	public double getDegree()
+	public Double getDegree()
 	{
-		return FULL_TURN;
+		return new Double(FULL_TURN);
 	}
 
-	public double getDistance()
+	public Double getDistance()
 	{
-		return 0;
+		return new Double(0);
 	}
 }

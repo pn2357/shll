@@ -2,5 +2,5 @@ package shll.radar;
 
 public interface Radar
 {
-	public double getDegree();
+	public Double getDegree();
 }

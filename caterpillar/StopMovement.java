@@ -3,21 +3,24 @@ package shll.caterpillar;
 import shll.Enemy;
 import shll.Exec;
 import shll.Util;
+import shll.Util.ShortTurn;
 
 public class StopMovement implements Movement
 {
 	double degree=0.0;
+	double distance=0.0;
 	StopMovement(Exec myRbot,Enemy enemy)
 	{
-		degree=Util.normalizeDegree(enemy.getBearing() + 90);
+		Util.ShortTurn shortTutn =  new ShortTurn(enemy.getBearing() + 90);
+		degree=shortTutn.getDegree();
 	}
-	public double getDegree()
+	public Double getDegree()
 	{
-		return degree;
+		return new Double(degree);
 	}
 
-	public double getDistance() {
-		// TODO 自動生成されたメソッド・スタブ
-		return 0;
+	public Double getDistance()
+	{
+		return null;
 	}
 }

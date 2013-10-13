@@ -2,6 +2,6 @@ package shll.caterpillar;
 
 public interface Movement
 {
-	public double getDegree();
-	public double getDistance();
+	public Double getDegree();
+	public Double getDistance();
 }

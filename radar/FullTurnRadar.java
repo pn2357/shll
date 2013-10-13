@@ -3,8 +3,8 @@ import shll.*;
 
 public class FullTurnRadar implements Radar,Consts
 {
-	public double getDegree()
+	public Double getDegree()
 	{
-		return FULL_TURN;
+		return new Double(FULL_TURN);
 	}
 }

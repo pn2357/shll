@@ -12,9 +12,9 @@ public class ChaseScanRadar implements Radar,Consts
 		degree+=(degree>0)?past:-past;
 	}
 	
-	public double getDegree()
+	public Double getDegree()
 	{
-		return degree;
+		return new Double(degree);
 	}
 
 	
