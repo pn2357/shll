@@ -17,6 +17,7 @@ public class Exec extends AdvancedRobot implements Consts
 	public int direction =1;
 	public boolean enemyInSightFlag=false;
 	public boolean shotDetectedFlag=false;
+	GetCycle getCycle =new GetCycle();
 	
 	public void run()
 	{
@@ -26,7 +27,8 @@ public class Exec extends AdvancedRobot implements Consts
 			doMove();		//移動行動の決定
 			doRadar();		//レーダーの行動の決定
 			doGun();		//砲撃の行動の決定
-			out.println(new DecideBulletPower(this,enemy).getBulletPower());
+			if(getCycle.getCycle(getTime(),3))
+				out.print(count++);
 			execute();
 		}
 	}
